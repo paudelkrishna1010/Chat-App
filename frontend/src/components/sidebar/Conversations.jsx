@@ -12,7 +12,7 @@ const { loading, conversations } = useGetConversations();
       {conversations.map((conversation, idx) => (
         <Conversation
           key={conversation._id}
-          Conversation={conversation}
+          conversation={conversation}
           emoji={getRandomEmoji()}
           lastIdx={idx == conversations.length - 1}
         />
