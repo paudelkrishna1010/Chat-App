@@ -10,10 +10,12 @@ function useListenMessages() {
   useEffect(() => {
     socket?.on("newMessage", (newMessage) => {
       setMessages([...messages, newMessage]);
+      if (newMessage){
+        const audio = new Audio(notificationSound);
+        audio.play();
+      }
     });
 
-    const audio = new Audio(notificationSound);
-    audio.play();
 
     return () => socket?.off("newMessage");
   }, [socket, setMessages, messages]);
